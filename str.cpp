@@ -11,3 +11,4 @@ Str::~Str() { delete this->m_str; }
 bool Str::operator==(const Str &other) const { return strcmp(this->m_str, other.getStr()) == 0; }
 bool Str::operator!=(const Str &other) const { return strcmp(this->m_str, other.getStr()) != 0; }
 bool Str::operator>(const Str &other) const { return strcmp(this->m_str, other.getStr()) > 0; }
+bool Str::operator<(const Str &other) const { return strcmp(this->m_str, other.getStr()) < 0; }
