@@ -4,3 +4,4 @@
 
 #include "str.h"
 
+Str::Str() { this->m_str = strdup("none"); }
