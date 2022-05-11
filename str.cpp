@@ -5,4 +5,5 @@
 #include "str.h"
 
 Str::Str() { this->m_str = strdup("none"); }
+Str::Str(const char *str) { delete this->m_str; this->m_str = strdup(str); }
 Str::~Str() { delete this->m_str; }
