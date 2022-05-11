@@ -12,3 +12,5 @@ bool Str::operator==(const Str &other) const { return strcmp(this->m_str, other.
 bool Str::operator!=(const Str &other) const { return strcmp(this->m_str, other.getStr()) != 0; }
 bool Str::operator>(const Str &other) const { return strcmp(this->m_str, other.getStr()) > 0; }
 bool Str::operator<(const Str &other) const { return strcmp(this->m_str, other.getStr()) < 0; }
+
+const Str& Str::operator=(const Str& other) { delete this->m_str; this->m_str = strdup(other.getStr()); }
