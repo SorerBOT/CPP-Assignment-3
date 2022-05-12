@@ -15,3 +15,5 @@ bool Str::operator<(const Str &other) const { return strcmp(this->m_str, other.g
 
 const Str& Str::operator=(const Str& other) { delete this->m_str; this->m_str = strdup(other.getStr()); return *this; }
 const Str& Str::operator=(const char* str) { delete this->m_str; this->m_str = strdup(str); return *this; }
+
+char& Str::operator[](int index) const { return const_cast<char &>(this->getStr()[index]); }
