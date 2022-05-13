@@ -31,3 +31,9 @@ Str Str::operator++(int) {
 }
 
 Str::operator int() const { return strlen(this->m_str); }
+
+int Str::operator()(char character) const {
+    int index;
+    for (index = 0; index < strlen(this->m_str); index++) if (this[index] == character) return index;
+    return -1;
+}
