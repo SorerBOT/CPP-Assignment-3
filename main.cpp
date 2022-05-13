@@ -85,7 +85,6 @@ int main()
     s1 = s1 + s3;
     if( 0 != strcmp( s1.getStr(), "nonetest str" ) )
         cout << "Error in operator+(Str) (-5)" << endl;
-
     //17
     s3 = "this is " + s3;
     if( 0 != strcmp( s3.getStr(), "this is test str" ) )
