@@ -29,3 +29,5 @@ Str Str::operator++(int) {
     for (iteration = 0; iteration < strlen(this->getStr()); iteration++) this->m_str[iteration]++;
     return temp;
 }
+
+Str::operator int() const { return strlen(this->m_str); }
