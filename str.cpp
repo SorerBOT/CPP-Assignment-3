@@ -43,6 +43,7 @@ Str Str::operator+(const Str& other) const {
     char* newString = new char[strlen(this->getStr()) + strlen(other.getStr()) + 1];
     for (index = 0; index < strlen(this->getStr()); index++) newString[index] = this[index];
     for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other[iteration];
+    newString[index + iteration] = '\0';
     return *new Str(newString);
 }
 
@@ -51,5 +52,18 @@ Str operator+(const char* str, const Str& other) {
     char* newString = new char[strlen(str) + strlen(other.getStr()) + 1];
     for (index = 0; index < strlen(str); index++) newString[index] = str[index];
     for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other[iteration];
+    newString[index + iteration] = '\0';
+    return *new Str(newString);
+}
+
+Str operator*(int num, const Str& other) {
+    int iteration, index;
+    char* newString = new char[num * strlen(other.getStr()) + 1];
+    for (iteration = 0; iteration < num; iteration++) {
+        for (index = 0; index < strlen(other.getStr()); index++) {
+            newString[iteration * strlen(other.getStr()) + index] = other.getStr()[index];
+        }
+    }
+    newString[index + iteration] = '\0';
     return *new Str(newString);
 }
