@@ -37,7 +37,6 @@ int Str::operator()(char character) const {
     int index;
     for (index = 0; index < strlen(this->m_str); index++) {
         if (this->m_str[index] == character) return index;
-        cout << this->m_str[index] << endl;
     }
     return -1;
 }
@@ -52,7 +51,6 @@ Str Str::operator+(const Str& other) const {
 }
 
 Str operator+(const char* str, const Str& other) {
-    cout << 1 << endl;
     char* newString = new char[strlen(str) + strlen(other.getStr()) + 1];
     int index, iteration;
     for (index = 0; index < strlen(str); index++) newString[index] = str[index];
@@ -62,22 +60,18 @@ Str operator+(const char* str, const Str& other) {
 }
 
 Str operator*(int num, const Str& other) {
-    int iteration, index;
+    int index;
     char* newString = new char[num * strlen(other.getStr()) + 1];
-    for (iteration = 0; iteration < num; iteration++) {
-        for (index = 0; index < strlen(other.getStr()); index++) {
-            newString[iteration * strlen(other.getStr()) + index] = other.getStr()[index];
-        }
-    }
-    newString[index + iteration] = '\0';
+    for (index = 0; index < num * strlen(other.getStr()); index++) { newString[index] = other.m_str[index % strlen(other.getStr())]; }
+    newString[index] = '\0';
     return *new Str(newString);
 }
 
 const Str& Str::operator+=(const Str& other) {
     int iteration, index;
     char* newString = new char[strlen(this->getStr()) + strlen(other.getStr()) + 1];
-    for (index = 0; index < strlen(this->getStr()); index++) newString[index] = this[index];
-    for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other[iteration];
+    for (index = 0; index < strlen(this->getStr()); index++) newString[index] = this->m_str[index];
+    for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other.m_str[iteration];
     newString[index + iteration] = '\0';
     delete this->m_str;
     this->m_str = newString;

@@ -100,7 +100,6 @@ int main()
     s3 += s5;
     if( 0 != strcmp( s3.getStr(), "this is test strboom" ) )
         cout << "Error in operator+= (-5)" << endl;
-
     cout << "done" << endl;
 
     return 0;
