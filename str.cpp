@@ -17,3 +17,15 @@ const Str& Str::operator=(const Str& other) { delete this->m_str; this->m_str = 
 const Str& Str::operator=(const char* str) { delete this->m_str; this->m_str = strdup(str); return *this; }
 
 char& Str::operator[](int index) const { return const_cast<char &>(this->getStr()[index]); }
+
+const Str& Str::operator++() {
+    int iteration;
+    for (iteration = 0; iteration < strlen(this->getStr()); iteration++) this->m_str[iteration]++;
+    return *this;
+}
+Str Str::operator++(int) {
+    Str& temp = *this;
+    int iteration;
+    for (iteration = 0; iteration < strlen(this->getStr()); iteration++) this->m_str[iteration]++;
+    return temp;
+}
