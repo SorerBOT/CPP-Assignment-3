@@ -37,3 +37,19 @@ int Str::operator()(char character) const {
     for (index = 0; index < strlen(this->m_str); index++) if (this[index] == character) return index;
     return -1;
 }
+
+Str Str::operator+(const Str& other) const {
+    int index, iteration;
+    char* newString = new char[strlen(this->getStr()) + strlen(other.getStr()) + 1];
+    for (index = 0; index < strlen(this->getStr()); index++) newString[index] = this[index];
+    for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other[iteration];
+    return *new Str(newString);
+}
+
+Str operator+(const char* str, const Str& other) {
+    int index, iteration;
+    char* newString = new char[strlen(str) + strlen(other.getStr()) + 1];
+    for (index = 0; index < strlen(str); index++) newString[index] = str[index];
+    for (iteration = 0; iteration < strlen(other.getStr()); iteration++) newString[iteration + index] = other[iteration];
+    return *new Str(newString);
+}

@@ -34,7 +34,6 @@ public://cast operators
     operator int() const;
 
 public://friend operators
-    friend Str operator+( const char* str, const Str& other );
     friend Str operator*( int num, const Str& other );
 
 public:
